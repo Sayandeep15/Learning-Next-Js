@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📡 Next.js API Routes & Middleware
 
-## Getting Started
+This project demonstrates how to use **API Routes** in Next.js along with **Middleware** powered by `NextResponse`. It's part of my learning journey into building full-stack applications using the Next.js framework.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 📘 What Are API Routes in Next.js?
+
+API Routes in Next.js let you create backend endpoints inside your app using the `pages/api/` directory. Each file in this directory automatically becomes a serverless function that handles HTTP requests like GET, POST, etc.
+
+### ✅ Features:
+- Built-in REST endpoints — no external server needed.
+- Request/response handled using `req` and `res` objects (like Node.js).
+- Fully server-side: never shipped to the browser.
+- Supports dynamic routes like `[id].js` or `[...params].js`.
+
+#### 🧪 Example:
+```js
+// pages/api/hello.js
+export default function handler(req, res) {
+  res.status(200).json({ message: 'Hello from Next.js API!' });
+}
+```
+# Important impors:
+```js
+import {NextResponse} from 'next/server'
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+NextResponse: NextResponse is a utility class from next/server used primarily in Middleware for modifying HTTP requests and responses.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+💡 Use cases:
+Authentication redirects
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Setting headers and cookies
 
-## Learn More
+Geolocation-based routing
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+A/B testing and bot filtering
